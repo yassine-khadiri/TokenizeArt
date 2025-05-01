@@ -1,0 +1,347 @@
+:root {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #3d8aff;
+  --border: #333;
+  --error: #ff5252;
+  --success: #4caf50;
+  --warning: #ffc107;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--card-bg);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  min-height: 50vh;
+  background-color: var(--card-bg);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.hero-content {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.hero-description {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: var(--text-secondary);
+}
+
+.nft-preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nft-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+}
+
+.mint-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mint-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mint-title {
+  font-size: 28px;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mint-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  margin: 10px 0;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 200px;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #2a73e8;
+}
+
+.btn:disabled {
+  background-color: #444;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  display: none;
+}
+
+.status.success {
+  background-color: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #4caf50;
+  display: block;
+}
+
+.status.error {
+  background-color: rgba(255, 82, 82, 0.2);
+  border: 1px solid rgba(255, 82, 82, 0.4);
+  color: #ff5252;
+  display: block;
+}
+
+.status.pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  color: #ffc107;
+  display: block;
+}
+
+.info-section {
+  padding: 40px 0;
+}
+
+.info-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.info-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+}
+
+.info-card-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+
+.wallet-info {
+  font-size: 16px;
+  margin-top: 10px;
+  color: var(--accent);
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-content {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .nft-image {
+    max-width: 300px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mint-box-section {
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 30px;
+  background: #212121;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+}
+
+/* Form Elements */
+.token-input {
+  margin: 30px;
+  background: none;
+  border: none;
+  outline: none;
+  max-width: 190px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.token-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.token-input input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.token-input input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Button */
+.btn-mint {
+  margin: 12px;
+  height: 50px;
+  width: 120px;
+  border-radius: 10px;
+  background: #333;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444,
+    inset -5px -5px 10px #222;
+  font-family: "Damion", cursive;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: rgb(161, 161, 161);
+  transition: 500ms;
+}
+
+.btn-mint:hover {
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
+    inset -5px -5px 10px #444;
+  color: #d6d6d6;
+  transition: 500ms;
+}
+
+.btn:hover {
+  background: #3182ce;
+}
+
+.btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Status Message */
+.status {
+  margin-top: 1.5rem;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  background: rgba(66, 153, 225, 0.1);
+  color: #2b6cb0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.status.show {
+  opacity: 1;
+}

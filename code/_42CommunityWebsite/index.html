@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>42 Community NFT Minting</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="nav">
+          <div class="logo">42 Community</div>
+          <div class="wallet-info" id="wallet-info">Not Connected</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">42 Community NFT</h1>
+          <p class="hero-description">
+            A unique NFT featuring the 42 community of elite programmers and
+            hackers, united in a digital hub with the number 42 at its core.
+          </p>
+          <button class="btn" id="connect-wallet">Connect Wallet</button>
+        </div>
+        <div class="nft-preview">
+          <img
+            src="./assets/ether.jpg"
+            alt="42 Community NFT"
+            class="nft-image"
+          />
+        </div>
+      </section>
+
+      <section class="mint-section">
+        <div class="mint-box-section">
+          <div class="mint-content">
+            <h1
+              style="margin-bottom: 1.5rem; text-align: center; color: #e85f64"
+            >
+              Mint Your NFT
+            </h1>
+
+            <div>
+              <label for="token-id">Token ID:</label>
+              <input
+                type="number"
+                class="token-input"
+                id="token-id"
+                min="1"
+                value="1"
+              />
+            </div>
+
+            <div>
+              <label for="token-uri">Token URI:</label>
+              <input
+                type="text"
+                class="token-input"
+                id="token-uri"
+                placeholder="https://example.com/metadata/1.json"
+              />
+            </div>
+
+            <button class="btn-mint" id="mint-btn" disabled>Mint Now</button>
+
+            <div class="status" id="status"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-title">Collection Information</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3 class="info-card-title">On-Chain Storage</h3>
+            <p>
+              The 42 Community NFT stores both metadata and images directly on
+              the blockchain, ensuring true permanence.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-card-title">Community</h3>
+            <p>
+              This NFT represents the 42 coding community - a network of
+              innovative programmers pushing the boundaries of technology.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-card-title">Design</h3>
+            <p>
+              Each NFT features the iconic number 42 at its core, representing
+              the community's unique identity.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-card-title">Contract Details</h3>
+            <p>
+              Contract: 0x...<br />
+              Network: Ethereum<br />
+              Standard: ERC-721
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 42 Community NFT. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
