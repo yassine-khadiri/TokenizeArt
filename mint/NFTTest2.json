@@ -1,0 +1,11 @@
+{
+  "name": "NFTTest2",
+  "image": "ipfs://bafybeia22xbj22vtil465nlics4ycboosti5em3h57ae43zycgmgr2f2ja",
+  "description": "description what is NFT about",
+  "attributes": [
+    {
+      "trait_type": "Artist",
+      "value": "lord"
+    }
+  ]
+}

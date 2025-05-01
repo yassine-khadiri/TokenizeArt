@@ -118,27 +118,45 @@
     </footer>
     <!-- <script type="module" src="./scripts/script.js"></script> -->
     <script>
+      let WEB3;
+      let fromAddress;
+
+      // Contract configuration
+      const CONTRACT_ADDRESS = "";
+      const CONTRACT_ABI = [
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_tokenURI",
+              type: "string",
+            },
+          ],
+          name: "mintNFT",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ];
+
       const connectWalletBtn = document.getElementById("connect-wallet");
       const mintBtn = document.getElementById("mint-btn");
       const statusEl = document.getElementById("status");
       const walletInfoEl = document.getElementById("wallet-info");
 
-      let WEB3;
-
-      // Contract configuration
-      const CONTRACT_ABI = CONTRACT_ADDRESS;
-      const CONTRACT_ADDRESS = "0x123456789...";
-      const MINT_PRICE = "0.042";
-
       const connectWallet = async () => {
         if (window.ethereum) {
-          const WEB3 = new Web3(window.ethereum);
-
-          console.log(WEB3.eth.Contract);
+          WEB3 = new Web3(window.ethereum);
 
           // Update UI
           if (window.ethereum.isMetaMask) {
             const address = await WEB3.eth.getAccounts();
+            fromAddress = address[0];
 
             walletInfoEl.textContent = `${address[0].substring(
               0,
@@ -149,20 +167,31 @@
             connectWalletBtn.disabled = true;
           }
         } else {
-          // no Ethereum provider - instruct user to install MetaMask
+          // no Ethereum provider
           document.getElementById("warn").innerHTML =
             "Please <a href='https://metamask.io/download/'>install MetaMask</a>.";
         }
       };
 
       const mintNFT = async () => {
-        try {
-          const contract = new WEB3.eth.Contract(contractABI, CONTRACT_ADDRESS);
+        const tokenId = document.getElementById("token-id").value;
+        const tokenURI = document.getElementById("token-uri").value;
 
-          console.log(contract);
+        try {
+          console.log("Minting NFT...");
+          const contract = new WEB3.eth.Contract(
+            CONTRACT_ABI,
+            CONTRACT_ADDRESS
+          );
+
+          const transaction = contract.methods.mintNFT(tokenId, tokenURI).send({
+            from: fromAddress,
+            gasPrice: 3000000,
+          });
+          statusEl.textContent = `Transaction successful: ${transaction}`;
         } catch (error) {
           console.error("Error minting NFT:", error);
-          // statusEl.textContent = "Minting failed. Please try again.";
+          statusEl.textContent = "Minting failed. Please try again.";
         }
       };
 
