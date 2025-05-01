@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>42 Community NFT Minting</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <!-- import Web3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   </head>
 
   <body>
@@ -66,7 +68,7 @@
               />
             </div>
 
-            <button class="btn-mint" id="mint-btn" disabled>Mint Now</button>
+            <button class="btn-mint" id="mint-btn">Mint Now</button>
 
             <div class="status" id="status"></div>
           </div>
@@ -114,7 +116,59 @@
         <p>© 2025 42 Community NFT. All rights reserved.</p>
       </div>
     </footer>
+    <!-- <script type="module" src="./scripts/script.js"></script> -->
+    <script>
+      const connectWalletBtn = document.getElementById("connect-wallet");
+      const mintBtn = document.getElementById("mint-btn");
+      const statusEl = document.getElementById("status");
+      const walletInfoEl = document.getElementById("wallet-info");
 
-    <script src="./scripts/script.js"></script>
+      let WEB3;
+
+      // Contract configuration
+      const CONTRACT_ABI = CONTRACT_ADDRESS;
+      const CONTRACT_ADDRESS = "0x123456789...";
+      const MINT_PRICE = "0.042";
+
+      const connectWallet = async () => {
+        if (window.ethereum) {
+          const WEB3 = new Web3(window.ethereum);
+
+          console.log(WEB3.eth.Contract);
+
+          // Update UI
+          if (window.ethereum.isMetaMask) {
+            const address = await WEB3.eth.getAccounts();
+
+            walletInfoEl.textContent = `${address[0].substring(
+              0,
+              6
+            )}...${address[0].substring(address[0].length - 4)}`;
+            walletInfoEl.style.display = "block";
+            connectWalletBtn.textContent = "Wallet Connected";
+            connectWalletBtn.disabled = true;
+          }
+        } else {
+          // no Ethereum provider - instruct user to install MetaMask
+          document.getElementById("warn").innerHTML =
+            "Please <a href='https://metamask.io/download/'>install MetaMask</a>.";
+        }
+      };
+
+      const mintNFT = async () => {
+        try {
+          const contract = new WEB3.eth.Contract(contractABI, CONTRACT_ADDRESS);
+
+          console.log(contract);
+        } catch (error) {
+          console.error("Error minting NFT:", error);
+          // statusEl.textContent = "Minting failed. Please try again.";
+        }
+      };
+
+      // Event listeners
+      connectWalletBtn.addEventListener("click", connectWallet);
+      mintBtn.addEventListener("click", mintNFT);
+    </script>
   </body>
 </html>
