@@ -137,7 +137,7 @@
               type: "string",
             },
           ],
-          name: "mintNFT",
+          name: "mintOffChainNFT",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -184,7 +184,7 @@
             CONTRACT_ADDRESS
           );
 
-          const transaction = contract.methods.mintNFT(tokenId, tokenURI).send({
+          const transaction = contract.methods.mintOffChainNFT(tokenId, tokenURI).send({
             from: fromAddress,
             gasPrice: 3000000,
           });
