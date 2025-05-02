@@ -138,7 +138,7 @@ This project was developed using [Remix Ethereum IDE](https://remix.ethereum.org
 
 For detailed deployment instructions, refer to:
 
-- [\_42CommunityNFT_DEPLOYMENT.md](./documentation/README.md)
+- [\_42CommunityNFT_DEPLOYMENT.md](./deployment/README.md)
 
 <!-- #### Step 3: Refer to Documentation
 
