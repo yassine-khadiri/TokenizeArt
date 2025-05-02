@@ -3,21 +3,9 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract _42Community is ERC721URIStorage, Ownable {
-    using Strings for uint256;
-
-    uint256 constant WIDTH = 200;
-    uint256 constant HEIGHT = 200;
-    
-    struct SVGParams {
-        string bgColor;
-        string text;
-        string textColor;
-        uint256 fontSize;
-    }
 
     // Struct to store NFT attributes
     struct Attributes {
@@ -29,7 +17,7 @@ contract _42Community is ERC721URIStorage, Ownable {
     struct NFTMetaData {
         string name;
         string description;
-        string image; // Could be SVG or base64 encoded image
+        string svgText;
         Attributes attributes;
     }
 
@@ -43,56 +31,50 @@ contract _42Community is ERC721URIStorage, Ownable {
     }
 
     function mintOnChainNFT(
-            uint256 tokenId,
-            string memory name,
-            string memory description,
-            SVGParams memory svgParams,
-            string memory artistName) public onlyOwner {
+            uint256 _tokenId,
+            string memory _name,
+            string memory _description,
+            string memory _svgText,
+            string memory _artistName) public onlyOwner {
 
-            Attributes memory attr = Attributes({trait_type: "Artist", value: artistName});
+            Attributes memory _attr = Attributes({trait_type: "Artist", value: _artistName});
 
-            onChainNFT.name = name;
-            onChainNFT.description = description;
-            onChainNFT.attributes = attr;
+            onChainNFT.name = _name;
+            onChainNFT.description = _description;
+            onChainNFT.svgText = _svgText;
+            onChainNFT.attributes = _attr;
 
-            _safeMint(msg.sender, 0);
-            _setTokenURI(tokenId, _generateTokenURI(svgParams));
+            _safeMint(msg.sender, _tokenId);
+            _setTokenURI(_tokenId, _generateTokenURI());
         }
 
-    function _generateSVG(SVGParams memory params) internal   {
-
-        onChainNFT.image = string(abi.encodePacked(
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ',
-                WIDTH.toString(), ' ', HEIGHT.toString(), '">',
-                '<rect width="100%" height="100%" fill="', params.bgColor, '"/>',
-                '<text x="50%" y="50%" font-family="Arial" font-size="',
-                params.fontSize.toString(), '" fill="', params.textColor,
-                '" text-anchor="middle" dominant-baseline="middle">',
-                params.text,
-                '</text></svg>'
-            ));
+    function _generateSVG() internal view returns (string memory) {
+        return string(abi.encodePacked(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">',
+            '<rect width="100%" height="100%" fill="#ffffff"/>',
+            '<text x="50%" y="50%" font-family="Arial" font-size="2" fill="#000000" ',
+            'text-anchor="middle" dominant-baseline="middle">',
+            onChainNFT.svgText,
+            '</text></svg>'
+        ));
     }
 
-    // Generate on-chain metadata URI
-    function _generateTokenURI(SVGParams memory params) internal returns (string memory) {
+    function _generateTokenURI() internal view returns (string memory) {
 
-        _generateSVG(params);
-
-         string memory metadata = string(abi.encodePacked(
-            '{"name": "', onChainNFT.name, '", ',
-            '"description": "', onChainNFT.description, '", ',
-            '"image":"data:image/svg+xml,', onChainNFT.image, '",',
-            '"attributes": [{',
-                '"trait_type": "', onChainNFT.attributes.trait_type, '", ',
-                '"value": "', onChainNFT.attributes.value, '"',
-            '}]}'
-        ));
+        // First encode the SVG to Base64
+        string memory svgBase64 = Base64.encode(bytes(_generateSVG()));
         
         return string(
             abi.encodePacked(
                 "data:application/json;base64,",
-                Base64.encode(bytes(metadata))
+                Base64.encode(bytes(abi.encodePacked(
+                    '{"name":"', onChainNFT.name, '",',
+                    '"description":"', onChainNFT.description, '",',
+                    '"image":"data:image/svg+xml;base64,', svgBase64, '",',
+                    '"attributes":[{"trait_type":"Artist","value":"', onChainNFT.attributes.value, '"}]}'
+                )))
             )
         );
     }
+
 }
