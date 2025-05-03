@@ -38,7 +38,7 @@ Should display your file
 {
   "name": "YOUR_NFT_NAME",
   "description": "YOUR_NFT_DESCRIPTION",
-  "image": "ipfs://QmXyZ.../42community_nft.png", // Replace with your image CID
+  "image": "ipfs://[CID]", // Replace with your image CID
   "attributes": [{ "trait_type": "Artist", "value": "YOUR_INTRA_LOGIN" }]
 }
 ```
