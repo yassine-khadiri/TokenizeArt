@@ -22,18 +22,18 @@ Industry-wide adoption for smart contracts
 ## Project Structure
 
 ```
-      TokenizeArt/
-      ├── code/
-      │   ├── _42CommunityWebsite/            # A simple Frontend interface (HTML/CSS/JS)
-      │   └── contracts/
-      │       └── _42CommunityNFT.sol         # Main ERC721 NFT contract (both on-chain/off-chain)
-      ├── deployment/
-      │   ├── README.md                       # Deployment guide
-      ├── documentation/
-      │   ├── 42Community_OffChain_USAGE.md   # IPFS-based NFT usage guide
-      │   └── 42Community_OnChain_USAGE.md    # On-chain SVG NFT usage guide
-      ├── mint/                               # Pre-configured NFT packages (assets + metadata folders)
-      └── README.md                           # Project overview and quickstart
+  TokenizeArt/
+  ├── code/
+  │   ├── _42CommunityWebsite/            # A simple Frontend interface (HTML/CSS/JS)
+  │   └── contracts/
+  │       └── _42CommunityNFT.sol         # Main ERC721 NFT contract (both on-chain/off-chain)
+  ├── deployment/
+  │   ├── README.md                       # Deployment guide
+  ├── documentation/
+  │   ├── 42Community_OffChain_USAGE.md   # IPFS-based NFT usage guide
+  │   └── 42Community_OnChain_USAGE.md    # On-chain SVG NFT usage guide
+  ├── mint/                               # Pre-configured NFT packages (assets + metadata folders)
+  └── README.md                           # Project overview and quickstart
 ```
 
 ## Development Environment
