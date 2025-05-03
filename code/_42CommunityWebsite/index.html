@@ -47,7 +47,7 @@
               Mint Your NFT
             </h1>
 
-            <div>
+            <div class="input-style">
               <label for="token-id">Token ID:</label>
               <input
                 type="number"
@@ -58,17 +58,27 @@
               />
             </div>
 
-            <div>
-              <label for="token-uri">Token URI:</label>
-              <input
-                type="text"
-                class="token-input"
-                id="token-uri"
-                placeholder="https://example.com/metadata/1.json"
-              />
+            <div class="input-style">
+              <label for="name">Name:</label>
+              <input class="token-input" id="name" />
             </div>
 
-            <button class="btn-mint" id="mint-btn">Mint Now</button>
+            <div class="input-style">
+              <label for="description">Description:</label>
+              <input class="token-input" id="description" />
+            </div>
+
+            <div class="input-style">
+              <label for="svg-text">Svg Text:</label>
+              <input class="token-input" id="svg-text" />
+            </div>
+
+            <div class="input-style">
+              <label for="artist-name">Artist name:</label>
+              <input class="token-input" id="artist-name" />
+            </div>
+
+            <button class="btn-mint" id="mint-btn" disabled>Mint Now</button>
 
             <div class="status" id="status"></div>
           </div>
@@ -116,7 +126,6 @@
         <p>© 2025 42 Community NFT. All rights reserved.</p>
       </div>
     </footer>
-    <!-- <script type="module" src="./scripts/script.js"></script> -->
     <script>
       let WEB3;
       let fromAddress;
@@ -128,16 +137,31 @@
           inputs: [
             {
               internalType: "uint256",
-              name: "tokenId",
+              name: "_tokenId",
               type: "uint256",
             },
             {
               internalType: "string",
-              name: "_tokenURI",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_description",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_svgText",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_artistName",
               type: "string",
             },
           ],
-          name: "mintOffChainNFT",
+          name: "mintOnChainNFT",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -148,6 +172,73 @@
       const mintBtn = document.getElementById("mint-btn");
       const statusEl = document.getElementById("status");
       const walletInfoEl = document.getElementById("wallet-info");
+      const btnMint = document.getElementById("mint-btn");
+
+      // Get all input elements
+      const tokenIdInput = document.getElementById("token-id");
+      const nameInput = document.getElementById("name");
+      const descriptionInput = document.getElementById("description");
+      const svgTextInput = document.getElementById("svg-text");
+      const artistNameInput = document.getElementById("artist-name");
+
+      // Values
+      let tokenId;
+      let name;
+      let description;
+      let svgText;
+      let artistName;
+
+      const allInputs = [
+        tokenIdInput,
+        nameInput,
+        descriptionInput,
+        svgTextInput,
+        artistNameInput,
+      ];
+
+      // Function to validate inputs and enable/disable mint button
+      const validateInputs = () => {
+        tokenId = tokenIdInput.value.trim();
+        name = nameInput.value.trim();
+        description = descriptionInput.value.trim();
+        svgText = svgTextInput.value.trim();
+        artistName = artistNameInput.value.trim();
+
+        // Enable button only if all fields have non-empty values
+        btnMint.disabled = !(
+          tokenId &&
+          name &&
+          description &&
+          svgText &&
+          artistName
+        );
+      };
+
+      const removeInputListeners = () => {
+        allInputs.forEach((input) => {
+          input.removeEventListener("input", validateInputs);
+          input.removeEventListener("change", validateInputs);
+        });
+      };
+
+      const addInputListeners = () => {
+        allInputs.forEach((input) => {
+          input.addEventListener("input", validateInputs);
+          input.addEventListener("change", validateInputs);
+        });
+      };
+
+      // Initial validation on page load
+      addInputListeners();
+
+      const resetForm = () => {
+        removeInputListeners();
+        allInputs.forEach((input) => (input.value = ""));
+
+        addInputListeners();
+
+        validateInputs();
+      };
 
       const connectWallet = async () => {
         if (window.ethereum) {
@@ -174,21 +265,23 @@
       };
 
       const mintNFT = async () => {
-        const tokenId = document.getElementById("token-id").value;
-        const tokenURI = document.getElementById("token-uri").value;
-
         try {
           console.log("Minting NFT...");
+
           const contract = new WEB3.eth.Contract(
             CONTRACT_ABI,
             CONTRACT_ADDRESS
           );
 
-          const transaction = contract.methods.mintOffChainNFT(tokenId, tokenURI).send({
-            from: fromAddress,
-            gasPrice: 3000000,
-          });
-          statusEl.textContent = `Transaction successful: ${transaction}`;
+          const transaction = contract.methods
+            .mintOnChainNFT(tokenId, name, description, svgText, artistName)
+            .send({
+              from: fromAddress,
+              gasPrice: 3500000,
+            });
+
+          statusEl.textContent = "Transaction successful";
+          resetForm();
         } catch (error) {
           console.error("Error minting NFT:", error);
           statusEl.textContent = "Minting failed. Please try again.";

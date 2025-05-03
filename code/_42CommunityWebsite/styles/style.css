@@ -258,7 +258,7 @@ footer {
 
 /* Form Elements */
 .token-input {
-  margin: 30px;
+  margin: 15px 30px 30px;
   background: none;
   border: none;
   outline: none;
@@ -314,6 +314,11 @@ footer {
   transition: 500ms;
 }
 
+.btn-mint:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
 .btn-mint:hover {
   box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
     inset -5px -5px 10px #444;
@@ -338,10 +343,14 @@ footer {
   text-align: center;
   background: rgba(66, 153, 225, 0.1);
   color: #2b6cb0;
-  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .status.show {
   opacity: 1;
+}
+
+.input-style {
+  display: flex;
+  flex-direction: column;
 }
