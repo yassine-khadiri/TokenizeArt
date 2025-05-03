@@ -24,16 +24,16 @@ Industry-wide adoption for smart contracts
 ```
       TokenizeArt/
       ├── code/
-      │   ├── _42CommunityWebsite/
-      │   ├── contracts/
-      │   └── _42CommunityNFT.sol              # Multisignature implementation
+      │   ├── _42CommunityWebsite/            # A simple Frontend interface (HTML/CSS/JS)
+      │   └── contracts/
+      │       └── _42CommunityNFT.sol         # Main ERC721 NFT contract (both on-chain/off-chain)
       ├── deployment/
-      │   ├── SamerV42Token_DEPLOYMENT.md            # How to deploy basic implementation
-      │   └── SamerV42TokenMultisig_DEPLOYMENT.md    # How to deploy multisig implementation
+      │   ├── README.md                       # Deployment guide
       ├── documentation/
-      │   ├── SamerV42Token_USAGE.md                 # How to use basic implementation
-      │   └── SamerV42TokenMultisig_USAGE.md         # How to use multisig implementation
-      └── README.md                                  # This file
+      │   ├── 42Community_OffChain_USAGE.md   # IPFS-based NFT usage guide
+      │   └── 42Community_OnChain_USAGE.md    # On-chain SVG NFT usage guide
+      ├── mint/                               # Pre-configured NFT packages (assets + metadata folders)
+      └── README.md                           # Project overview and quickstart
 ```
 
 ## Development Environment
@@ -140,8 +140,9 @@ For detailed deployment instructions, refer to:
 
 - [\_42CommunityNFT_DEPLOYMENT.md](./deployment/README.md)
 
-<!-- #### Step 3: Refer to Documentation
+#### Step 2: Refer to Documentation
 
 refer to:
 
-- [\_42CommunityNFT_DEPLOYMENT.md](./deployment/README.md) -->
+- [\42Community_OffChainNFT_USAGE.md](./documentation/42Community_OffChainNFT_USAGE.md)
+- [\42Community_OnChainNFT_USAGE.md](./documentation/42Community_OnChainNFT_USAGE.md)

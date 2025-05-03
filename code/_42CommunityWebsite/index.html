@@ -242,25 +242,28 @@
 
       const connectWallet = async () => {
         if (window.ethereum) {
-          WEB3 = new Web3(window.ethereum);
+          try {
+            if (window.ethereum.isMetaMask) {
+              await window.ethereum.request({ method: "eth_requestAccounts" });
+              WEB3 = new Web3(window.ethereum);
 
-          // Update UI
-          if (window.ethereum.isMetaMask) {
-            const address = await WEB3.eth.getAccounts();
-            fromAddress = address[0];
+              // Update UI
+              const address = await WEB3.eth.getAccounts();
+              fromAddress = address[0];
 
-            walletInfoEl.textContent = `${address[0].substring(
-              0,
-              6
-            )}...${address[0].substring(address[0].length - 4)}`;
-            walletInfoEl.style.display = "block";
-            connectWalletBtn.textContent = "Wallet Connected";
-            connectWalletBtn.disabled = true;
+              walletInfoEl.textContent = `${address[0].substring(
+                0,
+                6
+              )}...${address[0].substring(address[0].length - 4)}`;
+              walletInfoEl.style.display = "block";
+              connectWalletBtn.textContent = "Wallet Connected";
+              connectWalletBtn.disabled = true;
+            }
+          } catch (error) {
+            alert("Error connecting to wallet:", error);
           }
         } else {
-          // no Ethereum provider
-          document.getElementById("warn").innerHTML =
-            "Please <a href='https://metamask.io/download/'>install MetaMask</a>.";
+          alert("Please install metamask https://metamask.io/download/");
         }
       };
 

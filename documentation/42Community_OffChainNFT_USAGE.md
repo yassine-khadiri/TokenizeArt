@@ -82,6 +82,7 @@ Enter:
 - NFT Should Appear:
 
   Displays with your image/name
+  token Id
   Shows token standard: "ERC721"
 
 🌐 **View on OpenSea**
