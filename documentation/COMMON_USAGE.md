@@ -2,7 +2,7 @@
 
 ## 🔍 Core ERC721 Functions
 
-### supportsInterface(bytes4 interfaceId) → bool
+## supportsInterface(bytes4 interfaceId) → bool
 
 **Purpose**: Checks if contract implements a specific interface
 **Standard**: ERC-165 compliant
@@ -24,25 +24,25 @@ Returns true for:
 
 Returns false for unregistered interfaces
 
-# name()
+## name()
 
 **Returns**: "\_42Community"
 
-# symbol()
+## symbol()
 
 **Returns**: "\_42CY"
 
-# `ownerOf(uint256 tokenId) → address`
+## ownerOf(uint256 tokenId) → address
 
 **Returns**: Current owner of specified NFT
 
 **Reverts if**: Token doesn't exist
 
-# balanceOf(address owner) → uint256
+## balanceOf(address owner) → uint256
 
 **Returns**: Number of NFTs owned by address
 
-# tokenURI(uint256 tokenId) → string
+## tokenURI(uint256 tokenId) → string
 
 **Returns**: Metadata URI (IPFS/data URI)
 
@@ -53,7 +53,7 @@ _Behavior:_
 
 ## ↔️ Transfer Functions
 
-# safeTransferFrom(address from, address to, uint256 tokenId)
+## safeTransferFrom(address from, address to, uint256 tokenId)
 
 _Safely transfers NFT:_
 
@@ -77,9 +77,9 @@ _Data Parameter_
 
 ✅ Accepts optional data field
 
-# transferFrom(address from, address to, uint256 tokenId)
+## transferFrom(address from, address to, uint256 tokenId)
 
-# transferFrom(address from, address to, uint256 tokenId, bytes data)
+## transferFrom(address from, address to, uint256 tokenId, bytes data)
 
 _Requirements:_
 
@@ -97,20 +97,20 @@ _Data Parameter_
 
 ## 🔐 Approval System
 
-# approve(address operator, uint256 tokenId)
+## approve(address operator, uint256 tokenId)
 
 Grants single-NFT transfer rights
 Cleared automatically on transfer
 
-# getApproved(uint256 tokenId) → address
+## getApproved(uint256 tokenId) → address
 
 **Returns**: Approved address for specific NFT
 
-# setApprovalForAll(address operator, bool approved)
+## setApprovalForAll(address operator, bool approved)
 
 Whitelist operator for ALL NFTs
 
-# isApprovedForAll(address owner, address operator) → bool
+## isApprovedForAll(address owner, address operator) → bool
 
 **Checks**: If operator has full approval
 
