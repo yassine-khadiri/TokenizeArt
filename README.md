@@ -5,7 +5,7 @@
 An advanced ERC721 NFT contract with both off-chain and fully on-chain NFT capabilities. The contract allows for:
 
 1. Traditional off-chain metadata NFTs (IPFS-based)
-2. Fully on-chain NFTs with SVG images and metadata stored directly in the contract
+2. Fully on-chain NFTs with SVG images and metadata stored directly in the blockchain
 
 ## Language Choice
 
@@ -30,6 +30,7 @@ Industry-wide adoption for smart contracts
   ├── deployment/
   │   ├── README.md                       # Deployment guide
   ├── documentation/
+  │   ├── COMMON_USAGE.md                 # Core function reference & interaction guide
   │   ├── 42Community_OffChain_USAGE.md   # IPFS-based NFT usage guide
   │   └── 42Community_OnChain_USAGE.md    # On-chain SVG NFT usage guide
   ├── mint/                               # Pre-configured NFT packages (assets + metadata folders)
@@ -61,7 +62,7 @@ This project was developed using [Remix Ethereum IDE](https://remix.ethereum.org
    - Structured attribute system
 
 3. **Technical Specifications**:
-   - ERC721 standard with URIStorage extension
+   - ERC721 standard with ERC721URIStorage extension
    - Ownable pattern for access control
    - Optimized for gas efficiency
 
@@ -117,8 +118,7 @@ This project was developed using [Remix Ethereum IDE](https://remix.ethereum.org
 
 2. **Minting Interface**:
 
-   - Token ID input
-   - Metadata URI field
+   - mintOnChainNFT function inputs
    - Transaction status monitoring
 
 3. **User Experience**:
@@ -143,6 +143,10 @@ For detailed deployment instructions, refer to:
 #### Step 2: Refer to Documentation
 
 refer to:
+
+Start By: [\COMMON_USAGE.md](./documentation/COMMON_USAGE.md)
+
+then:
 
 - [\42Community_OffChainNFT_USAGE.md](./documentation/42Community_OffChainNFT_USAGE.md)
 - [\42Community_OnChainNFT_USAGE.md](./documentation/42Community_OnChainNFT_USAGE.md)

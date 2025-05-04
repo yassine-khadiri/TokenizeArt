@@ -1,7 +1,7 @@
 {
   "name": "42 Community",
+  "description": "this is a description",
   "image": "ipfs://bafybeihjal5hlecpvrbw4ljlildxtn53atgfvwrdsi5ijngkqila5hibxi",
-  "description": "A cinematic cyberpunk NFT featuring the 42 community of elite programmers and hackers, united in a glowing digital hub beneath a neon city, with the number 42 at its core.",
   "attributes": [
     {
       "trait_type": "Artist",

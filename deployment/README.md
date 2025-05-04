@@ -25,7 +25,7 @@
 ### 3. Add the Contract Code
 
 1. Open your newly created `.sol` file
-2. Copy and paste the token contract code from the prepared files
+2. Copy and paste the NFT contract code from the prepared files [\_42CommunityNFT.sol](../code/contracts/_42CommunityNFT.sol)
 
 ### 4. Compile the Contract
 

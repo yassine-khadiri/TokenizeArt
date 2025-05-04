@@ -5,7 +5,7 @@
 ### 1. Create NFT Image
 
 - Format: PNG or JPG
-- Example: Save as `42community_nft.png`
+- Example: Save as `_42CommunityNFT.png`
 
 ### 2. Upload to Pinata
 
@@ -20,7 +20,7 @@ Single File:
 
 - Click → "Add" → "File Upload"
 
-- Select your 42community_nft.png
+- Select your _42CommunityNFT.png
 
 - Wait for upload, then copy the CID
 
@@ -36,7 +36,7 @@ Should display your file
 
 ```json
 {
-  "name": "YOUR_NFT_NAME",
+  "name": "42 YOUR_NFT_TITLE",
   "description": "YOUR_NFT_DESCRIPTION",
   "image": "ipfs://[CID]", // Replace with your image CID
   "attributes": [{ "trait_type": "Artist", "value": "YOUR_INTRA_LOGIN" }]

@@ -44,16 +44,9 @@ Click "Connect"
 
 ### 3. Mint On-Chain NFT
 
-_- Scroll to minting form_
+- Scroll to minting form
 
-_- Fill all required fields:_
-
-Field Example Value Notes
-Token ID 42 Must be unique
-Name My 42 NFT
-Description Exclusive 42 Community NFT
-SVG Text 42 Will appear centered
-Artist Name your_intra Your 42 login
+- Fill all required fields
 
 - Mint Button will enable only when:
 
