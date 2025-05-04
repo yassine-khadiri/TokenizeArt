@@ -76,5 +76,4 @@ contract _42Community is ERC721URIStorage, Ownable {
             )
         );
     }
-
 }
